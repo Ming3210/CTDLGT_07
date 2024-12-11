@@ -42,7 +42,7 @@ void enqueue(Queue* queue, char* value,int priority){
 	if(isEmpty(queue)){
 		queue->front = 0;
 	}
- queue->rear++;
+ 	queue->rear++;
     queue->arr[queue->rear].data = value;
     queue->arr[queue->rear].priority = priority; 
 }
@@ -64,7 +64,7 @@ void printQueue(Queue* queue) {
         printf("Hang doi rong\n");
         return;
     }
-    Item max = queue->arr[0];
+    Item max = queue->arr[queue->front];
     for (int i = queue->front; i <= queue->rear; i++) {
         printf("%s\t", queue->arr[i].data); 
     }
@@ -83,7 +83,7 @@ int main(){
 	enqueue(&queue,"TASK A", 2);
 	enqueue(&queue,"TASK B", 4);
 	enqueue(&queue,"TASK C", 3);
-
+	dequeue(&queue);
 	printQueue(&queue);
 	return 0;
 }
